@@ -39,7 +39,7 @@ export default function OfficerDashboard() {
 				) : (
 					<div className="bg-white p-6 rounded-lg shadow-lg">
 						<ul className="space-y-4">
-							{reports.length > 0 ? (
+							{reports?.length > 0 ? (
 								reports.map((report) => (
 									<li key={report.id} className="border-b pb-4">
 										<Link
