@@ -3,7 +3,6 @@
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import UnstyledLink from "@/components/links/UnstyledLink";
-import NextImage from "@/components/NextImage";
 
 interface NavLink {
 	href: string;
@@ -11,9 +10,9 @@ interface NavLink {
 }
 
 const navLinks: NavLink[] = [
-	{ href: "/", label: "Beranda" },
-	{ href: "/about", label: "Tentang Kami" },
-	{ href: "/gallery", label: "Galeri" },
+	{ href: "/officer/dashboard", label: "Dashboard Petugas" },
+	{ href: "/report/create", label: "Buat Laporan" },
+	{ href: "/report/track", label: "Track Laporan" },
 ];
 
 export default function Navbar() {
@@ -28,16 +27,8 @@ export default function Navbar() {
 				<div className="flex items-center justify-between h-20 max-md:h-16">
 					{/* Logo */}
 					<UnstyledLink href={`/`} className="flex items-center gap-2">
-						<NextImage
-							width={552}
-							height={388}
-							src={"/next.svg"}
-							serverStaticImg
-							alt="Logo"
-							className="flex max-w-[50px] items-center md:max-w-[75px]"
-						/>
 						<p className="text-xl max-md:text-base text-gray-900 font-semibold">
-							Next Template
+							LAPORIN
 						</p>
 					</UnstyledLink>
 
