@@ -60,7 +60,7 @@ export default function ChatClient({
       console.log(`${roles} WebSocket connection closed.`);
       setPresence("offline");
     },
-    shouldReconnect: (closeEvent) => true,
+    shouldReconnect: (_closeEvent) => true,
   });
 
   useEffect(() => {
@@ -117,6 +117,7 @@ export default function ChatClient({
           const historicalMessages = await res.json();
 
           const decryptedHistory = await Promise.all(
+            // biome-ignore lint/suspicious/noExplicitAny: "any" is used here to handle dynamic message structure
             historicalMessages.data.map(async (msg: any) => {
               // Determine whose public key to use for decryption based on the sender
               const decryptKey =

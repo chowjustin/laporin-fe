@@ -12,7 +12,7 @@ export default function OfficerReportPage() {
 		<Layout withNavbar withFooter>
 			<div className="flex items-center justify-center min-h-screen bg-gray-100 p-4">
 				{reportId ? (
-					<ChatClient reportId={reportId} role="officer" />
+					<ChatClient reportId={reportId} roles="officer" />
 				) : (
 					<p>Loading report...</p>
 				)}

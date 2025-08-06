@@ -19,7 +19,7 @@ export default function ChatTestPage() {
 					</h1>
 					<ChatClient
 						reportId={mockReportId}
-						role="user"
+						roles="user"
 						seedPhrase={mockSeedPhrase}
 					/>
 				</div>
@@ -29,7 +29,7 @@ export default function ChatTestPage() {
 					<h1 className="text-2xl font-bold mb-4 text-center text-gray-800">
 						Officer View
 					</h1>
-					<ChatClient reportId={mockReportId} role="officer" />
+					<ChatClient reportId={mockReportId} roles="officer" />
 				</div>
 			</div>
 		</Layout>
