@@ -57,10 +57,10 @@ export default function TextArea({
 					maxLength={maxLength}
 					onChange={handleChange}
 					className={clsxm(
-						"h-full w-full rounded-[15px] border border-[#E2E8F0] px-[20px] py-[15px] caret-[#4FD1C5]",
-						"focus:outline-1 focus:outline-[#4FD1C5] focus:ring-inset",
+						"h-full w-full rounded-[15px] border border-[#E2E8F0] px-[20px] py-[15px] caret-primary-500",
+						"focus:outline-1 focus:outline-primary-500 focus:ring-inset",
 						"text-sm focus:bg-slate-50",
-						"hover:ring-1 hover:ring-inset hover:ring-[#4FD1C5]",
+						"hover:ring-1 hover:ring-inset hover:ring-primary-600",
 						"placeholder:text-sm placeholder:text-gray-500",
 						"text-gray-900",
 						readOnly &&

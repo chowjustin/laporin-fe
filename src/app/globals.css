@@ -1,2 +1,58 @@
 @import "tailwindcss";
 @config "../../tailwind.config.ts";
+
+@layer base {
+	/* #region  /**=========== Typography =========== */
+	.j1 {
+		@apply text-4xl font-bold;
+	}
+	.j2 {
+		@apply text-3xl font-bold;
+	}
+	.h1 {
+		@apply text-2xl font-semibold;
+	}
+	.h2 {
+		@apply text-xl font-semibold;
+	}
+	.h3 {
+		@apply text-lg font-semibold;
+	}
+	.h4 {
+		@apply text-base font-bold;
+	}
+	.h5 {
+		@apply text-base font-semibold;
+	}
+	.h6 {
+		@apply text-sm font-semibold;
+	}
+	.s1 {
+		@apply text-lg font-medium;
+	}
+	.s2 {
+		@apply text-base font-medium;
+	}
+	.s3 {
+		@apply text-sm font-medium;
+	}
+	.s4 {
+		@apply text-xs font-medium;
+	}
+	.b1 {
+		@apply text-lg;
+	}
+	.b2 {
+		@apply text-base;
+	}
+	.b3 {
+		@apply text-sm font-normal;
+	}
+	.c1 {
+		@apply text-xs;
+	}
+	.c2 {
+		@apply text-[11px] leading-[14px];
+	}
+	/* #endregion  /**======== Typography =========== */
+}

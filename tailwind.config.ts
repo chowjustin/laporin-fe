@@ -23,22 +23,17 @@ const config: Config = {
 			},
 			colors: {
 				primary: {
-					50: "#fae1e1",
-					//* Background
-					100: "#f7cccc",
-					200: "#f3b3b3",
-					//* Complement
-					300: "#ee9a9a",
-					400: "#ea8080",
-					//* Default
-					500: "#e66767",
-					//* Hovered
-					600: "#c05656",
-					//* Active
-					700: "#994545",
-					800: "#733434",
-					900: "#4d2222",
-					1000: "#2e1515",
+					50: "#e7f4fb",
+					100: "#d1eaf8",
+					200: "#a3d5f1", // complement
+					300: "#75c0ea",
+					400: "#47abe3",
+					500: "#1a96dc", // default
+					600: "#007fc3", // hovered
+					700: "#0067a0", // active
+					800: "#004e7a",
+					900: "#003754",
+					1000: "#002336",
 				},
 				secondary: {
 					50: "#f9d6d5",
@@ -57,6 +52,14 @@ const config: Config = {
 					800: "#721a18",
 					900: "#4c1110",
 					1000: "#2d0a09",
+				},
+				typo: {
+					DEFAULT: "#1F1F1F",
+					secondary: "#707070",
+					tertiary: "#999CA0",
+					icons: "#999CA0",
+					divider: "#EBEBEB",
+					outline: "#D9D9D9",
 				},
 				"primary-bg": "#dc3545", // bg
 				"primary-hover": "#bb2d3b", // hover

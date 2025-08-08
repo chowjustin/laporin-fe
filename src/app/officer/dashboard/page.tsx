@@ -8,7 +8,7 @@ import Layout from "@/layouts/Layout";
 interface Report {
 	id: string;
 	details: string | null;
-	createdAt: string;
+	created_at: string;
 }
 
 export default function OfficerDashboard() {
@@ -50,7 +50,7 @@ export default function OfficerDashboard() {
 												Report ID: {report.id}
 											</p>
 											<p className="text-sm text-gray-600">
-												Created: {new Date(report.createdAt).toLocaleString()}
+												Created: {new Date(report.created_at).toLocaleString()}
 											</p>
 											<p className="mt-2 text-gray-800 truncate">
 												{report.details || "No details provided."}

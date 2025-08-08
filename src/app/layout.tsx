@@ -9,9 +9,9 @@ import GoogleAnalytics from "@/components/GoogleAnalytics";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 const siteConfig = {
-	title: "Next Template",
+	title: "Laporin",
 	description:
-		"A Next.js 15 starter template with TypeScript, Tailwind CSS v4, and built-in tools for efficient development.",
+		"Laporin adalah platform untuk melaporkan kejadian yang Anda alami. Ceritakan kronologi kejadian, siapa saja yang terlibat, dan kapan kejadiannya.",
 	url: process.env.SITE_URL || "https://example.com",
 };
 
@@ -45,7 +45,7 @@ export default function RootLayout({
 				<meta name="apple-mobile-web-app-title" content={siteConfig.title} />
 			</Head>
 			{process.env.NEXT_PUBLIC_RUN_MODE === "production" && <GoogleAnalytics />}
-			<body className={`${inter.className}`}>
+			<body className={`${inter.className}`} suppressHydrationWarning>
 				<Providers>{children}</Providers>
 			</body>
 		</html>

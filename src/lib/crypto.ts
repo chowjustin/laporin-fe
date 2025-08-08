@@ -1,4 +1,3 @@
-// src/lib/crypto.ts
 "use client";
 
 import { x25519 } from "@noble/curves/ed25519";
@@ -36,7 +35,7 @@ export function generateSeedPhrase(): string {
  */
 export async function generateEncryptionKeyPair(seedPhrase: string) {
 	const seed = await bip39.mnemonicToSeed(seedPhrase);
-	// Use a portion of the seed for the private key (e.g., first 32 bytes)
+	// Use a portion of the seed for the private key (first 32 bytes)
 	const privateKeyBytes = seed.slice(0, 32);
 	const publicKeyBytes = x25519.getPublicKey(privateKeyBytes);
 

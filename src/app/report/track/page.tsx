@@ -38,7 +38,7 @@ export default function ReportLoginPage() {
 			const response = await fetch("http://localhost:5000/api/reports/lookup", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({ userPublicKey: keys.publicKey }),
+				body: JSON.stringify({ user_public_key: keys.publicKey }),
 			});
 
 			if (!response.ok) {

@@ -1,4 +1,3 @@
-// chowjustin/laporin-fe/src/components/chat/ChatClient.tsx
 "use client";
 
 import { Send } from "lucide-react";
@@ -93,8 +92,8 @@ export default function ChatClient({
 						setTheirPublicKey(report.officerPublicKey);
 					}
 				} else {
-					if (report.userPublicKey) {
-						setTheirPublicKey(report.userPublicKey);
+					if (report.user_public_key) {
+						setTheirPublicKey(report.user_public_key);
 					}
 					if (!report.officerPublicKey && generatedKeys) {
 						await fetch(
