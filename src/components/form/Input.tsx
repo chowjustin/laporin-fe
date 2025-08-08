@@ -109,11 +109,11 @@ export default function Input({
 						readOnly={readOnly}
 						disabled={readOnly}
 						className={clsxm(
-							"h-full w-full rounded-md border border-gray-500 px-3 py-2.5 caret-gray-900",
+							"h-full w-full rounded-md border border-gray-500 px-3 py-2.5 caret-primary-700",
 							[LeftIcon && "pl-9", RightIcon && "pr-9"],
-							"focus:outline-1 focus:outline-gray-900 focus:ring-inset",
+							"focus:outline-1 focus:outline-primary-700 focus:ring-primary-700",
 							"text-sm",
-							"hover:ring-1 hover:ring-inset hover:ring-gray-900 transition duration-300",
+							"hover:ring-1 hover:ring-primary-700 transition duration-300",
 							"placeholder:text-sm placeholder:text-gray-500",
 							"text-gray-900",
 							readOnly && "cursor-not-allowed",

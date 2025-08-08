@@ -15,8 +15,9 @@ export default function LabelText({
 	return (
 		<Typography
 			as="p"
-			variant="b2"
-			className={clsxm("text-sm text-gray-900", labelTextClasname)}
+			variant="h5"
+			weight="semibold"
+			className={clsxm("text-typo", labelTextClasname)}
 		>
 			{children} {required && <span className="text-red-500">*</span>}
 		</Typography>
