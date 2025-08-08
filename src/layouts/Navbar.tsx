@@ -2,25 +2,41 @@
 
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import Button from "@/components/button/Button";
+import ButtonLink from "@/components/links/ButtonLink";
 import UnstyledLink from "@/components/links/UnstyledLink";
 import NextImage from "@/components/NextImage";
+import Typography from "@/components/Typography";
+import useAuthStore from "@/stores/useAuthStore";
 
-interface NavLink {
+type NavLink = {
 	href: string;
 	label: string;
-}
-
-const navLinks: NavLink[] = [
-	{ href: "/officer/dashboard", label: "Dashboard Petugas" },
-	{ href: "/report/form", label: "Buat Laporan" },
-	{ href: "/report/track", label: "Track Laporan" },
-];
+	onClick?: () => void;
+};
 
 export default function Navbar() {
 	const [isOpen, setIsOpen] = useState(false);
 	const pathname = usePathname();
+	const user = useAuthStore.useUser();
+	const logout = useAuthStore.useLogout();
 
 	const isActive = (href: string) => pathname === href;
+
+	const userNavLinks: NavLink[] = [
+		{ href: "/report/form", label: "Buat Laporan" },
+		{ href: "/report/track", label: "Track Laporan" },
+	];
+
+	const officerNavLinks: NavLink[] = [
+		{ href: "/officer/dashboard", label: "Dashboard" },
+		{
+			href: "#",
+			label: "Logout",
+			onClick: () => logout(),
+		},
+	];
+	const navLinks: NavLink[] = user ? officerNavLinks : userNavLinks;
 
 	return (
 		<nav className="bg-primary-50/60 shadow-md w-full sticky z-50">
@@ -31,39 +47,43 @@ export default function Navbar() {
 						<NextImage
 							src="/logo.png"
 							alt="Laporin Logo"
-							width={150}
-							height={75}
-							className="w-[80px] sm:w-[100px] md:w-[120px]"
+							width={170}
+							height={200}
+							className="w-[35px] sm:w-[45px]"
 						/>
+						<Typography
+							variant="h1"
+							weight="bold"
+							className=" text-primary-800 ml-2"
+						>
+							Laporin
+						</Typography>
 					</UnstyledLink>
 
 					{/* Desktop Menu */}
 					<div className="hidden md:flex items-center space-x-8">
-						<div className="flex items-baseline space-x-6">
-							{navLinks.map((link) => (
-								<UnstyledLink
-									href={link.href}
-									key={link.href}
-									className="group relative cursor-pointer"
-								>
-									<p
-										className={`relative z-10 transition-all duration-300 ease-in-out ${
-											isActive(link.href)
-												? "text-primary-700 font-semibold"
-												: "hover:text-primary-700 text-gray-400"
-										}`}
+						<div className="flex items-baseline space-x-4">
+							{!user ? (
+								<>
+									<ButtonLink href="/report/form">Buat Laporan</ButtonLink>
+									<ButtonLink href="/report/track" variant="outline">
+										Track Laporan
+									</ButtonLink>
+								</>
+							) : (
+								<>
+									<ButtonLink
+										href="/officer/dashboard"
+										variant="primary"
+										className="bg-primary-700 hover:bg-primary-800"
 									>
-										{link.label}
-									</p>
-									<span
-										className={`absolute bottom-0 h-[1px] bg-primary-700 rounded-full transition-all duration-300 ease-in-out ${
-											isActive(link.href)
-												? "w-full left-0"
-												: "left-1/2 w-0 group-hover:w-full group-hover:left-0"
-										}`}
-									></span>
-								</UnstyledLink>
-							))}
+										Dashboard
+									</ButtonLink>
+									<Button onClick={() => logout()} variant="red">
+										Logout
+									</Button>
+								</>
+							)}
 						</div>
 					</div>
 
@@ -120,20 +140,34 @@ export default function Navbar() {
 							} overflow-hidden bg-white border-t border-primary-200 shadow-lg z-50`}
 						>
 							<div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-								{navLinks.map((link) => (
-									<UnstyledLink
-										key={link.href}
-										href={link.href}
-										className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-300 ${
-											isActive(link.href)
-												? "bg-primary-700 text-white"
-												: "text-gray-400 hover:bg-primary-400/50 hover:text-typo"
-										}`}
-										onClick={() => setIsOpen(false)}
-									>
-										{link.label}
-									</UnstyledLink>
-								))}
+								{navLinks.map((link: NavLink) =>
+									link.onClick ? (
+										<Button
+											key={link.href}
+											variant="red"
+											className={`block w-full px-3 py-2 rounded-md text-base font-medium transition-colors duration-300`}
+											onClick={() => {
+												link.onClick?.();
+												setIsOpen(false);
+											}}
+										>
+											{link.label}
+										</Button>
+									) : (
+										<UnstyledLink
+											key={link.href}
+											href={link.href}
+											className={`block px-3 py-2 text-center rounded-md text-base font-medium transition-colors duration-300 ${
+												isActive(link.href)
+													? "bg-primary-700 text-white"
+													: "text-gray-400 hover:bg-primary-400/50 hover:text-typo"
+											}`}
+											onClick={() => setIsOpen(false)}
+										>
+											{link.label}
+										</UnstyledLink>
+									),
+								)}
 							</div>
 						</div>
 					</div>

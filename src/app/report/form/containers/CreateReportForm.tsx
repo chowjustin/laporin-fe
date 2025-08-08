@@ -172,6 +172,7 @@ export default function CreateReportForm() {
 								placeholder="Tuliskan cerita Anda di sini..."
 								validation={{ required: "Laporan tidak boleh kosong." }}
 								rows={10}
+								maxLength={10000}
 							/>
 							<Button type="submit" isLoading={isPending} className="w-full">
 								Kirim Laporan

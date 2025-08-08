@@ -12,7 +12,7 @@ const siteConfig = {
 	title: "Laporin",
 	description:
 		"Laporin adalah platform untuk melaporkan kejadian yang Anda alami. Ceritakan kronologi kejadian, siapa saja yang terlibat, dan kapan kejadiannya.",
-	url: process.env.SITE_URL || "https://example.com",
+	url: process.env.SITE_URL || "https://laporin-fe.vercel.app",
 };
 
 export const metadata: Metadata = {

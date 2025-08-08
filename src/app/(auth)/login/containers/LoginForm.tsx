@@ -29,9 +29,9 @@ export default function LoginPage() {
 		<section className="h-screen flex flex-col items-center justify-center">
 			<Typography
 				as="h1"
-				variant="h1"
+				variant="j2"
 				weight="bold"
-				className="text-center max-sm:text-[24px]"
+				className="text-center text-primary-800"
 			>
 				Masuk
 			</Typography>
