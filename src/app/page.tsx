@@ -22,7 +22,7 @@ export default function HomePage() {
 					<Link href="#">Edukasi</Link>
 					<Link href="#">Kontak</Link>
 				</nav>
-				<div className="flex items-center gap-2">
+				<div className="flex items-center gap-2 max-md:hidden">
 					<Link
 						href="/report/create"
 						className="rounded-full border border-[#002D57] px-4 py-2 text-sm font-medium text-[#002D57]"
