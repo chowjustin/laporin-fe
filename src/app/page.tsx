@@ -94,7 +94,7 @@ export default function HomePage() {
 				<section className="bg-white px-[20%] py-10 max-md:px-6 max-md:pt-0">
 					<div className="rounded-xl overflow-hidden shadow-xl max-w-5xl mx-auto aspect-video">
 						<iframe
-							src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+							src="https://www.youtube.com/embed/YUbzTrbaAXM"
 							title="YouTube video"
 							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 							allowFullScreen
