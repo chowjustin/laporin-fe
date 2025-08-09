@@ -39,7 +39,7 @@ export default function Navbar() {
 	const navLinks: NavLink[] = user ? officerNavLinks : userNavLinks;
 
 	return (
-		<nav className="bg-primary-50/60 shadow-md w-full sticky z-50">
+		<nav className="bg-primary-50/60 shadow-md w-full sticky z-50 h-[64px] md:h-[80px]">
 			<div className="px-4 sm:px-6 md:px-8 lg:px-[10%] mx-auto">
 				<div className="flex items-center justify-between h-20 max-md:h-16">
 					{/* Logo */}

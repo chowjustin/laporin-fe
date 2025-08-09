@@ -2,9 +2,7 @@ import { createSelectorHooks } from "auto-zustand-selectors-hook";
 import { produce } from "immer";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
-
 import { removeToken, setToken } from "@/lib/cookies";
-
 import type { User, WithToken } from "@/types/entities/user";
 
 type AuthStoreType = {
@@ -49,7 +47,7 @@ const useAuthStoreBase = create<AuthStoreType>()(
 			},
 		}),
 		{
-			name: "auth-storage",
+			name: "auth-store",
 			storage: createJSONStorage(() => sessionStorage),
 			partialize: (state) => ({
 				user: state.user,

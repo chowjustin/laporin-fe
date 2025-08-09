@@ -6,8 +6,10 @@ import ButtonLink from "@/components/links/ButtonLink";
 import Typography from "@/components/Typography";
 import Table from "@/components/table/Table";
 import Layout from "@/layouts/Layout";
+import clsxm from "@/lib/clsxm";
 import useAuthStore from "@/stores/useAuthStore";
 import type { Report } from "@/types/entities/report";
+import { getCategoryLabel, getInstanceTypeLabel } from "./helper";
 import { useGetAllReports } from "./hooks/useGetAllReports";
 
 export default withAuth(OfficerDashboard, "officer");
@@ -50,33 +52,6 @@ function OfficerDashboard() {
 	);
 }
 
-const INSTANCE_TYPE_LABEL: Record<string, string> = {
-	POLRI_PPA: "Unit PPA Polri",
-	UPTD_PPA: "UPTD PPA dan P2TP2A",
-	KOMNAS_PEREMPUAN: "Komisi Nasional Anti Kekerasan terhadap Perempuan.",
-	KPAI: "Komisi Perlindungan Anak Indonesia",
-	LBH_OMS: "Lembaga Bantuan Hukum & Organisasi Masyarakat Sipil",
-};
-
-function getInstanceTypeLabel(instance: string) {
-	if (!instance) return undefined;
-	return INSTANCE_TYPE_LABEL[instance];
-}
-
-const CATEGORY_LABEL: Record<string, string> = {
-	KEKERASAN_DALAM_RUMAH_TANGGA: "Kekerasan Dalam Rumah Tangga",
-	KEKERASAN_SEKSUAL: "Kekerasan Seksual",
-	KEKERASAN_PADA_ANAK: "Kekerasan Pada Anak",
-	PERDAGANGAN_ORANG: "Perdagangan Orang",
-	SIBER_KEKERASAN_BERBASIS_GENDER: "Siber Kekerasan Berbasis Gender",
-	KEKERASAN_LAINNYA: "Kekerasan Lainnya",
-};
-
-function getCategoryLabel(category: string) {
-	if (!category) return undefined;
-	return CATEGORY_LABEL[category];
-}
-
 const columns: ColumnDef<Report>[] = [
 	{
 		accessorKey: "summary",
@@ -99,13 +74,42 @@ const columns: ColumnDef<Report>[] = [
 	{
 		accessorKey: "urgency",
 		header: "Urgensi",
+		cell: (props) => {
+			const urgency = props.getValue() as string;
+
+			const urgencyStyles: { [key: string]: string } = {
+				Kritis: "bg-red-800 text-white",
+				Tinggi: "bg-red-500 text-white",
+				Sedang: "bg-orange-400 text-white",
+			};
+
+			const badgeClass = urgencyStyles[urgency] || "bg-gray-400 text-white";
+
+			return (
+				<span
+					className={clsxm(
+						"px-3 py-1 text-sm font-semibold rounded-full",
+						badgeClass,
+					)}
+				>
+					{urgency || "Tidak Diketahui"}
+				</span>
+			);
+		},
 	},
 	{
 		accessorKey: "created_at",
 		header: "Tanggal Dibuat",
 		cell: (props) => {
 			const date = new Date(props.getValue() as string);
-			return <span>{date.toLocaleDateString("id-ID")}</span>;
+			return (
+				<span>
+					{date.toLocaleString("id-ID", {
+						dateStyle: "medium",
+						timeStyle: "short",
+					})}
+				</span>
+			);
 		},
 	},
 	{

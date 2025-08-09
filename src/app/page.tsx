@@ -17,7 +17,7 @@ export default function HomePage() {
 						</h1>
 						<div className="mt-6 flex gap-4 max-md:flex-col max-md:text-center">
 							<Link
-								href="/report/create"
+								href="/report/form"
 								className="rounded-full border border-[#002D57] px-5 py-2 font-medium text-[#002D57]"
 								type="button"
 							>

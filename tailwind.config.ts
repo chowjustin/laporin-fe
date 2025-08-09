@@ -19,6 +19,10 @@ const config: Config = {
 		},
 		extend: {
 			fontFamily: {
+				minHeight: {
+					main: "calc(100vh - 80px)",
+					"main-mobile": "calc(100vh - 64px)", // for mobile
+				},
 				poppins: ["var(--font-poppins)", ...fontFamily.sans],
 			},
 			colors: {

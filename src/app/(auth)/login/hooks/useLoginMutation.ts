@@ -32,7 +32,7 @@ export const useLoginMutation = () => {
 		},
 		onSuccess: () => {
 			toast.success("Login successful!");
-			router.push("/");
+			router.push("/officer/dashboard");
 		},
 		onError: (error) => {
 			toast.error(error.response?.data.message || "Login failed!");

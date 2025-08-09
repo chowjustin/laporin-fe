@@ -43,18 +43,18 @@ export default function EdukasiPage() {
 
 	const instances = [
 		{
-			name: "POLRI_PPA",
+			name: "Unit PPA Polri",
 			icon: <Gavel className="w-8 h-8 text-[#002D57]" />,
 			description: "Unit PPA Polri untuk kasus pidana dan penindakan hukum.",
 		},
 		{
-			name: "UPTD_PPA",
+			name: "UPTD PPA atau P2TP2A",
 			icon: <Building className="w-8 h-8 text-[#002D57]" />,
 			description:
 				"UPTD PPA atau P2TP2A untuk layanan korban seperti konseling, rumah aman, dan pendampingan.",
 		},
 		{
-			name: "KOMNAS_PEREMPUAN",
+			name: "Komnas Perempuan",
 			icon: <Users className="w-8 h-8 text-[#002D57]" />,
 			description:
 				"Komisi Nasional Anti Kekerasan terhadap Perempuan untuk advokasi kebijakan dan isu sistemik.",
@@ -66,7 +66,7 @@ export default function EdukasiPage() {
 				"Komisi Perlindungan Anak Indonesia untuk perlindungan hak dan keselamatan anak.",
 		},
 		{
-			name: "LBH_OMS",
+			name: "Lembaga Bantuan Hukum & Organisasi Masyarakat Sipil",
 			icon: <Scale className="w-8 h-8 text-[#002D57]" />,
 			description:
 				"Lembaga Bantuan Hukum & Organisasi Masyarakat Sipil untuk bantuan hukum gratis dan pendampingan dari NGO.",
@@ -94,9 +94,9 @@ export default function EdukasiPage() {
 						Urutan Proses Pelaporan
 					</h2>
 					<div className="max-w-6xl mx-auto grid md:grid-cols-4 gap-6">
-						{steps.map((step, i) => (
+						{steps.map((step) => (
 							<div
-								key={i}
+								key={`${step.title}`}
 								className="bg-[#F5FBFF] rounded-xl p-6 shadow hover:shadow-lg transition-shadow duration-200 text-center"
 							>
 								<div className="flex justify-center mb-4">{step.icon}</div>
@@ -116,9 +116,9 @@ export default function EdukasiPage() {
 							Lembaga Tujuan Laporan
 						</h2>
 						<div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-							{instances.map((inst, i) => (
+							{instances.map((inst) => (
 								<div
-									key={i}
+									key={inst.name}
 									className="bg-[#F5FBFF] rounded-xl p-6 shadow hover:shadow-lg hover:scale-[1.02] transition-transform duration-200"
 								>
 									<div className="flex items-center gap-3 mb-3">

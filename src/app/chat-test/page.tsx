@@ -1,14 +1,7 @@
-// src/app/chat-test/page.tsx
 import ChatClient from "@/components/chat/ChatClient";
 import Layout from "@/layouts/Layout";
 
 export default function ChatTestPage() {
-	// In a real scenario, the reportId would come from the URL params
-	// and the seed phrase from a secure, client-side store.
-	const mockReportId = "test-report-123";
-	const mockSeedPhrase =
-		"abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about";
-
 	return (
 		<Layout withNavbar={false} withFooter={false}>
 			<div className="flex flex-col md:flex-row items-start justify-center min-h-screen bg-gray-200 gap-8 p-8">
@@ -18,9 +11,14 @@ export default function ChatTestPage() {
 						User View
 					</h1>
 					<ChatClient
-						reportId={mockReportId}
-						roles="user"
-						seedPhrase={mockSeedPhrase}
+						reportId={process.env.NEXT_PUBLIC_MOCK_REPORT_ID as string}
+						userRole="CLIENT"
+						myPrivateKey={
+							process.env.NEXT_PUBLIC_MOCK_CLIENT_PRIVATE_KEY as string
+						}
+						theirPublicKey={
+							process.env.NEXT_PUBLIC_OFFICER_PUBLIC_KEY as string
+						}
 					/>
 				</div>
 
@@ -29,7 +27,14 @@ export default function ChatTestPage() {
 					<h1 className="text-2xl font-bold mb-4 text-center text-gray-800">
 						Officer View
 					</h1>
-					<ChatClient reportId={mockReportId} roles="officer" />
+					<ChatClient
+						reportId={process.env.NEXT_PUBLIC_MOCK_REPORT_ID as string}
+						userRole="OFFICER"
+						myPrivateKey={process.env.OFFICER_PRIVATE_KEY as string}
+						theirPublicKey={
+							process.env.NEXT_PUBLIC_MOCK_CLIENT_PUBLIC_KEY as string
+						}
+					/>
 				</div>
 			</div>
 		</Layout>

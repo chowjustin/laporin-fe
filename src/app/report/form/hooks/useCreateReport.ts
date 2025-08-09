@@ -1,7 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import type { AxiosError } from "axios";
 import toast from "react-hot-toast";
-import { useReportStore } from "@/app/stores/useReportStore";
 import api from "@/lib/api";
 import {
 	encryptMessage,
@@ -13,7 +12,6 @@ import type { Report } from "@/types/entities/report";
 import type { ReportForm } from "../containers/CreateReportForm";
 
 export const useCreateReportMutation = () => {
-	const setReportData = useReportStore.useSetReportData();
 	const { data, mutate, isPending } = useMutation<
 		ApiResponse<Report>,
 		AxiosError<ApiError>,
@@ -42,8 +40,7 @@ export const useCreateReportMutation = () => {
 				},
 			};
 		},
-		onSuccess: (data) => {
-			setReportData(data.data.id, data.data.seed_phrase);
+		onSuccess: () => {
 			toast.success("Laporan berhasil dibuat!");
 		},
 		onError: (error) => {
